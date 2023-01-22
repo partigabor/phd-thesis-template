@@ -1,6 +1,6 @@
 %% This is thesis.tex, the main TeX-file of the Ph.D. thesis  of Gábor Parti.
 %% The base LaTeX template was originally created by Tom M. Ragonneau (https://github.com/ragonneau/phd-thesis-template),
-%% and subsequently modified by Gábor Parti. This version is tailored for multi-script documents, and uses LuaLaTeX.
+%% and subsequently modified by Gábor Parti (https://github.com/partigabor/phd-thesis-template). This version is tailored for multi-script documents, and uses LuaLaTeX.
 %% It aims to follow the requirements of The Hong Kong Polytechnic University,
 %% and features tools and functions, such as linguistic trees, examples, and IPA typing, for linguistics-oriented works.
 %%
@@ -20,11 +20,11 @@
 \addbibresource{thesis.bib}
 
 % Thesis metadata
-\title{Title of Thesis}
-\newcommand{\subtitle}{Subtitle of Thesis}
-\author{Firstname Lastname}
-\DTMsavedate{ini}{2023-08-31}  % date of creation
-\DTMsavedate{rev}{2023-12-31}  % date of revision
+\title{Mapping the Language of Spices}
+\newcommand{\subtitle}{A corpus-based, philological study on the words of the spice domain}
+\author{G{\'{a}}bor Parti}
+\DTMsavedate{ini}{2022-08-27}  % date of creation
+\DTMsavedate{rev}{2023-01-27}  % date of revision
 \date{\DTMusedate{ini}}
 \def\degree{Doctor of Philosophy}
 \def\university{The Hong Kong Polytechnic University}
@@ -50,25 +50,32 @@
 \cleardoublepage
 \listoftables
 
-\cleardoublepage
-\printunsrtglossary[type=main, title={Glossary}]
+\cleardoublepage 
+\printglossary[type=main]
 
 \cleardoublepage
-\printunsrtglossary[type=acronym, title={Acronyms}]
+\printglossary[type=acronym]
 
 \cleardoublepage
-\printunsrtglossary[type=symbols, title={Symbols and Notation}] 
+\printunsrtglossary[type=symbols, title={Symbols and Notation}]
 
 \ifdraft{
     \cleardoublepage
+    \phantomsection
     \todototoc
-    \listoftodos
-    }{}
+    \listoftodos}{}
 
 \mainmatter
 
-\include{contents/introduction}
-\include{contents/example}
+\include{utils/example}
+
+% \include{contents/1-introduction}
+% \include{contents/2-background}
+% \include{contents/3-methodology}
+% \include{contents/4-data}
+% \include{contents/5-diffusion}
+% \include{contents/6-language}
+% \include{contents/7-conclusion}
 
 \appendix
 
@@ -76,11 +83,14 @@
 \include{contents/appendix}
 
 \cleardoublepage
-\printunsrtglossary[type=primary, title={Primary Sources}, style=index]
+\printglossary[type=primary, title={Primary Sources}, style=index]
 
 \cleardoublepage
 \printbibliography[heading=bibintoc]
 
+\cleardoublepage
 \include{utils/index}
 
 \end{document}
+
+% To compile locally, download the project source code, command in folder: <latexmk> or <lualatex thesis> (assuming you have LaTeX/MiKTeX, https://www.latex-project.org/get/)
