@@ -207,6 +207,72 @@ BoldItalicFont=*-BoldItalic]
 % \newfontfamily\garamond{EB Garamond}
 % \AtBeginEnvironment{quote}{\garamond}
 
+% Page headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\newcommand{\textmark}[2]{\textbf{#1}\quad\color{\accentcolor}#2}%Chapter names in footer
+\renewcommand*{\chaptermark}[1]{\markboth{\textmark{\chaptername\ \thechapter}{#1}}{}}
+\renewcommand*{\sectionmark}[1]{\markright{\textmark{\thesection}{#1}}}
+\fancypagestyle{plain}{%
+    \fancyhf{}%
+    \renewcommand{\headrulewidth}{0pt}%
+    \renewcommand{\footrulewidth}{0pt}%
+    \fancyfootoffset[OR]{1.85cm}%
+    \fancyfoot[OR]{%
+        \color{\accentcolor}\rule[-18.48mm]{1.25pt}{21.98mm}\hspace*{10pt}%Rule
+        \begin{minipage}[b]{1.5cm}%
+            \normalsize\textbf{\thepage}%
+        \end{minipage}%
+    }%
+    \fancyfootoffset[EL]{1.85cm}%
+    \fancyfoot[EL]{%
+        \begin{minipage}[b]{1.5cm}%
+            \raggedleft\normalsize\textbf{\thepage}%
+        \end{minipage}%
+        \hspace*{10pt}{\color{\accentcolor}\rule[-18.48mm]{1.25pt}{21.98mm}}%Rule
+    }%
+}
+\fancypagestyle{main}{%
+    \fancyhf{}%
+    \renewcommand{\headrulewidth}{0pt}%
+    \renewcommand{\footrulewidth}{0pt}%
+    \fancyfootoffset[OR]{1.85cm}%
+    \fancyfoot[OR]{%
+        \footnotesize\rightmark\hspace*{1pc}{\color{\accentcolor}\rule[-18.48mm]{1.25pt}{21.98mm}}\hspace*{10pt}%Rule
+        \begin{minipage}[b]{1.5cm}%
+            \normalsize\textbf{\thepage}%
+        \end{minipage}%
+    }%
+    \fancyfootoffset[EL]{1.85cm}%
+    \fancyfoot[EL]{%
+        \footnotesize%
+        \begin{minipage}[b]{1.5cm}%
+            \raggedleft\normalsize\textbf{\thepage}%
+        \end{minipage}%
+        \hspace*{10pt}{\color{\accentcolor}\rule[-18.48mm]{1.25pt}{21.98mm}}\hspace*{1pc}\leftmark%Rule
+    }%
+}
+\pagestyle{main}
+
+% Titles and sectioning
+\usepackage[explicit]{titlesec}
+\titleformat{\chapter}[display]%
+    {\normalfont}%
+    {\raggedleft\vspace{-\dimexpr\baselineskip+33.48mm\relax}\color{\accentcolor}\rule[-2mm]{2pt}{45.48mm}\quad\fontsize{60}{60}\selectfont\thechapter}%Chapter numeral and line
+    {-12mm}%
+    {\parbox[t]{\dimexpr\textwidth-35mm\relax}{\raggedright\huge#1}}[\phantomsection]
+\titlespacing*{\chapter}{0pt}{0pt}{3em}
+\titleformat{\section}%
+    {\normalfont\Large}%
+    {\thesection}%
+    {1pc}%
+    {\color{\accentcolor}#1}[\phantomsection]
+\titleformat{\subsection}% Section head 
+    {\normalfont\large}%
+    {\thesubsection}%
+    {1pc}%
+    {\color{\accentcolor}#1}[\phantomsection]% Subsection head
+
 % Draft mode
 \usepackage{ifdraft}
 \ifdraft{
@@ -234,9 +300,6 @@ BoldItalicFont=*-BoldItalic]
         text={INITIAL SUBMISSION FOR\\[0.5em] EXAMINATION PURPOSE},%
         colorspec=0.9,%
     ]{draftwatermark}
-    
-% Fancy layout
-\input{utils/layout.tex}
 
 % List of hyphenation exceptions for US English
 % Source: https://ctan.org/tex-archive/info/digests/tugboat/hyphenex
@@ -502,7 +565,7 @@ BoldItalicFont=*-BoldItalic]
 \newcommand{\lgS}{\char"017F} % long S
 \newcommand{\lgSS}{\char"017F\char"017F} % double long S
 
-% Special env
+% Special environment
 % \newcommand{\historic}[1]{{\fontspec{EB Garamond}#1}}
 
 % Scientific names of species, taxons
@@ -512,9 +575,6 @@ BoldItalicFont=*-BoldItalic]
 % Icons
 \usepackage{academicons}
 \newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor{Orcid}{\aiOrcid}}}
-
-
-
 
 % Insert coverpage and titlepage
 \renewcommand{\maketitle}{%
