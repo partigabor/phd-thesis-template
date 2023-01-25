@@ -14,7 +14,6 @@
 %% The Current Maintainer of this work is Gábor Parti.
 
 \documentclass[initial]{thesis} % In draft, initial, or final modes
-\usepackage[final]{microtype}
 
 % Bibliographical resources
 \addbibresource{thesis.bib}
@@ -57,15 +56,6 @@
 \cleardoublepage
 \printglossary[type=acronym]
 
-\cleardoublepage
-\printunsrtglossary[type=symbols, title={Symbols and Notation}]
-
-\ifdraft{
-    \cleardoublepage
-    \phantomsection
-    \todototoc
-    \listoftodos}{}
-
 \mainmatter
 
 \include{contents/introduction}
@@ -76,9 +66,6 @@
 \cleardoublepage
 \include{contents/appendix}
 
-% \cleardoublepage
-% \printglossary[type=primary, title={Primary Sources}, style=index]
-
 \cleardoublepage
 \printbibliography[heading=bibintoc]
 
@@ -86,5 +73,3 @@
 \include{utils/index}
 
 \end{document}
-
-% To compile locally, download the project source code, command in folder: <latexmk> or <lualatex thesis> (assuming you have LaTeX/MiKTeX, https://www.latex-project.org/get/)
