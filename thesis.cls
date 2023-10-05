@@ -101,6 +101,7 @@ UprightFont=*-Roman,
 BoldFont=*-Bold,
 ItalicFont=*-Italic,
 BoldItalicFont=*-BoldItalic]
+
 % Automatic typesetting of certain writing systems (optional)
 \babelprovide[import=ar, onchar=ids fonts]{arabic}
 % \babelprovide[import=he, onchar=ids fonts]{hebrew}
